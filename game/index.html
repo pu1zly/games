@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fishing Rhythm Game</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+<div id="main-menu">
+    <div id="main-title">
+        <h1>Fishing Rhythm Game</h1>
+    </div>
+    <div id="difficulty-buttons">
+        <button id="easy-btn">Shallow River</button>
+        <button id="medium-btn">Deep Lake</button>
+        <button id="hard-btn">Ocean</button>
+    </div>
+</div>
+
+<div id="game-container" style="display: none;">
+    <div id="beatmap-name" style="font-size: 20px; color: white; margin-bottom: 10px;"></div>
+    <div id="note-bar">
+        <div id="hitzone"></div>
+        <div id="note-container"></div>
+    </div>
+    <div id="hud">
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <button id="pause-btn">Pause (ESC)</button>
+
+    <div id="pause-overlay">
+        <button id="retry-btn">Retry</button>
+        <button id="song-select-btn">Song Select</button>
+        <button id="main-menu-btn">Main Menu</button>
+    </div>
+</div>
+
+<div id="song-menu" style="display: none;">
+    <h2>Choose a Fish to Catch!</h2>
+    <div id="song-list">
+        <!-- Song/Beatmap buttons will be dynamically added here -->
+        <!-- Each song button will be wrapped in a div with a .beatmap-item class, and the hover info box will appear inside the div -->
+    </div>
+    <button id="back-btn">Back to Main Menu</button>
+    <button id="reset-scores-btn">Reset Every Score</button>
+</div>
+
+<div id="results-screen" style="display: none;">
+    <h2>Game Over!</h2>
+    <p>Your final score: <span id="final-score"></span></p>
+    <button id="retry-from-results-btn">Play Again</button>
+    <button id="go-back-song-select-btn">Song Select</button>
+    <button id="main-menu-from-results-btn">Return to Main Menu</button>
+</div>
+
+<!-- Fish image container under results -->
+<div id="fish-image-container" class="fish-container">
+    <div class="fish-box">
+        <img id="fish-image" src="" alt="Caught Fish" />
+        <div id="fish-size-display" class="fish-size-message"></div>
+    </div>
+</div>
+
+<audio id="bg-music" preload="auto"></audio>
+<div id="countdown" style="display: none;">3</div>
+
+<script type="module" src="scripts/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("../images/background.gif") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+    transition: background-image 0.8s ease-in-out, background-color 0.8s ease-in-out;
+}
+
+/* Black tint overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 40% opacity black overlay */
+    z-index: -1;
+}
+
+/* Background variations for difficulty */
+body.easy-bg {
+    background-image: url("../images/easy-bg.gif");
+}
+
+body.medium-bg {
+    background-image: url("images/medium-bg.png");
+}
+
+body.hard-bg {
+    background-image: url("images/hard-bg.png");
+}
+
+/* Main menu styling */
+#main-menu {
+    text-align: center;
+    color: #ffffff;
+    padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns all children including buttons */
+}
+
+#main-title {
+    padding-bottom: 250px; /* Adjust this for title spacing */
+}
+
+#difficulty-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center them horizontally */
+    gap: 7px; /* Space between buttons */
+    padding-bottom: 20px;
+}
+
+#difficulty-buttons button {
+    width: 200px;        /* fixed width for uniformity */
+    text-align: center;  /* centers the text inside */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Song Menu Styling */
+#song-menu {
+    margin: auto;
+    width: 100%;
+    height: 90%;
+    border: 3px solid #6c6d69;
+    padding: 10px;
+    border-radius: 14px;
+}
+
+#song-menu h2 {
+    text-align: left;
+    color: #ffffff;
+    padding-bottom: 60px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+#song-list {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+#note-bar {
+    position: relative;
+    top: 450px;
+    width: 800px;
+    height: 100px;
+    background-color: #ccc;
+    border: 4px solid #333;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#hitzone {
+    position: absolute;
+    left: 205px;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.2);
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    z-index: 2;
+}
+
+.note {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background-color: blue;
+    border-radius: 4px;
+}
+
+#hud {
+    font-size: 20px;
+    color: #333;
+    margin-top: 460px;
+}
+
+/* Pause and Results Menu Styling */
+#pause-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 14px;
+    font-size: 16px;
+    z-index: 5;
+    border-radius: 6px;
+    border: none;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+}
+
+#pause-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Tint everything */
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Results Screen */
+#results-screen {
+    display: none;  /* Initially hidden */
+    position: absolute; /* or fixed to make it overlay */
+    top: 12%; /* Centering it */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#results-screen p {
+    padding-bottom: 20px;
+}
+
+#results-screen h2 {
+    margin: 0 0 20px;
+}
+
+#results-screen button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Fish Container */
+.fish-container {
+    display: none;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.fish-box {
+    display: inline-block;
+    top: 300px;
+    padding-top: 100px;
+    padding-left: 70px;
+    padding-right: 70px;
+    border: 4px solid #4b9c64;
+    background-color: #8ecfdf;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding-bottom: 150px;
+}
+
+.fish-box img {
+    transition: transform 0.3s ease;
+    max-width: 100%;
+    height: auto;
+}
+
+.fish-size-message {
+    position: absolute;
+    bottom: 250px;
+    left: 875px;
+}
+
+/* Beatmap Item (for song selection) */
+.beatmap-item {
+    position: relative;
+    margin: 10px 0;
+}
+
+.beatmap-button {
+    display: flex;
+    width: 50%;
+    padding: 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: #3498db;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: left;
+}
+
+/* Hover effect on button */
+.beatmap-button:hover {
+    background-color: #2980b9;
+}
+
+/* Hidden info box that shows on hover */
+.beatmap-info {
+    display: none;
+    position: absolute;
+    bottom: -170px;
+    left: 53%;           /* Position to the right of the button */
+    width: 200px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 5;
+}
+
+/* Show info box when hovering over the beatmap item */
+.beatmap-item:hover .beatmap-info {
+    display: block;
+}
+
+#countdown {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: white;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.fish-preview {
+    width: 150px;        /* You can use px, %, rem, etc. */
+    height: auto;        /* Keeps the aspect ratio */
+    border-radius: 8px;  /* Optional: round the corners */
+    object-fit: cover;   /* Makes it crop instead of stretch */
+    margin-bottom: 13px; /* Adds spacing below the image */
+}
+
+.reset-button {
+    margin: 10px;
+    padding: 8px 16px;
+    background-color: #c62828;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reset-button:hover {
+    background-color: #b71c1c;
+}
